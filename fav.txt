@@ -1,0 +1,7 @@
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+pour symfony ???
+
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
