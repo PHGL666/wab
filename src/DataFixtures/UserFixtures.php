@@ -33,7 +33,6 @@ class UserFixtures extends Fixture
         $manager->persist($john);
         $this->setReference("user-john", $john);
 
-
         $manager->flush();
     }
 }
