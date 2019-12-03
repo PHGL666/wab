@@ -10,15 +10,11 @@ class UnitLimitFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $min = new UnitLimit();
-        $min->setMin(0);
-        $manager->persist($min);
-        $this->setReference("unit_limit_min", $min);
-
-        $max = new UnitLimit();
-        $max->setMax(6);
-        $manager->persist($max);
-        $this->setReference("unit_limit_max", $max);
+        $unitLimit = new UnitLimit();
+        $unitLimit->setMin(0);
+        $unitLimit->setMax(6);
+        $manager->persist($unitLimit);
+        $this->setReference("unit_limit", $unitLimit);
 
         $manager->flush();
     }

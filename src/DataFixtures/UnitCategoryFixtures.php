@@ -32,7 +32,7 @@ class UnitCategoryFixtures extends Fixture
 
         $special_unit = new UnitCategory();
         $special_unit->setName("Unités Specials");
-        $manager->persist($unitCategory4);
+        $manager->persist($special_unit);
         $this->setReference("special_unit", $special_unit);
         
         $rare_unit = new UnitCategory();
