@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3a65f0c84d423f3a11de5967dc0b728",
+    "content-hash": "5574c7d7827c8473327b9a0dd622573e",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -4292,7 +4292,7 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v4.3.6",
+            "version": "v4.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",

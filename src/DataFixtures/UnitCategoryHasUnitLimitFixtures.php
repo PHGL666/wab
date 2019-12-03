@@ -60,7 +60,7 @@ class UnitCategoryHasUnitLimitFixtures extends Fixture implements DependentFixtu
         $lessThan1001RareUnit->setMax(1);
         $manager->persist($lessThan1001RareUnit);
         $this->setReference("lessThan1001RareUnit", $lessThan1001RareUnit);
-
+        
         // LESS THAN 2000 POINTS
         $lessThan2000Characters = new UnitCategoryHasUnitLimit();
         $lessThan2000Characters->setUnitCategory($this->getReference("characters"));
