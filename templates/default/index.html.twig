@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Wargame Army Builder
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<img src="{{ asset('build/images/logo.png') }}" class="logo" alt="logo de Wargame Army Builder">
+		</div>
+	</div>
+
+	<div class="container py-5">
+		<div class="row">
+			<div class="col text-center">
+				<h1>WAR ARMY BUILDER</h1>
+				<p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, amet error illum commodi tenetur fuga necessitatibus ullam pariatur voluptatem accusamus quia cupiditate, perferendis est facere quae incidunt! Eaque ut adipisci blanditiis atque temporibus ullam dolore magni consectetur quia eius voluptatibus voluptas illo soluta sit, sed odit perspiciatis? Dolorem, iusto illo.</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col text-center">
+				<div class="my-3">
+					{% if app.user %}
+						<button class="cta col-3 btn">
+							<a href="{{ path('app_logout') }}">Disconnect</a>
+						</button>
+					{% else %}
+						<div>Already enlisted</div>
+						<button class="cta col-3 btn mt-1 mb-3">
+							<a href="{{ path('app_login') }}">Identify yourself General !</a>
+						</button>
+						<div>First connection</div>
+						<button class="cta col-3 btn mt-1 mb-3">
+							<a href="{{ path('app_register') }}">Register now Wargamer !</a>
+						</button>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
