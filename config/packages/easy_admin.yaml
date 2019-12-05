@@ -4,3 +4,4 @@ easy_admin:
         - App\Entity\Army
         - App\Entity\Unit
         - App\Entity\User
+        - App\Entity\Article

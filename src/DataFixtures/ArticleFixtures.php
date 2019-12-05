@@ -2,9 +2,9 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Article;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\Article;
 
 class ArticleFixtures extends Fixture
 {
@@ -14,7 +14,7 @@ class ArticleFixtures extends Fixture
             $article = new Article();
             $article->setTitle("Titre de la new n°$i")
                 ->setContent("<p>Contenu de l'article n°$i</p>")
-                ->setImage("http://placehold.it/350*150")
+                ->setImage("http://placehold.it/350x150")
                 ->setCreatedAt(new \DateTime());
 
             $manager->persist($article);
