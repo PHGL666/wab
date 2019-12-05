@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
-class News
+class Article
 {
     /**
      * @ORM\Id()

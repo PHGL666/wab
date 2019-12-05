@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WAB - articles
+{% endblock %}
+
+{% block body %}
+
+	<h1>{{ title }}</h1>
+
+	<section class="article">
+		{% for article in articles %}
+			<article>
+				<h2>{{ article.title }}</h2>
+				<div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Modélisme</div>
+				<div class="content">
+					<img src="{{ article.image }}" alt="">
+					{{ article.content | raw }}
+					<a href="{{ path('article_show', {'id': article.id}) }}" class="btn cta">Lire la suite</a>
+				</div>
+			</article>
+		{% endfor %}
+
+
+	</section>
+
+{% endblock %}
