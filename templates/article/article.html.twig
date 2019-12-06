@@ -11,12 +11,15 @@
 		{% for article in articles %}
 			<article>
 				<h2>{{ article.title }}</h2>
-				<div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Modélisme</div>
+				<div class="metadata">Write the {{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }} in category Modelism</div>
 				<div class="content">
 					<img src="{{ article.image }}" alt="">
 					{{ article.content | raw }}
-					<a href="{{ path('article_show', {'id': article.id}) }}" class="btn cta">Lire la suite</a>
 				</div>
+					<a href="{{ path('article_show', {'id': article.id}) }}" class="btn cta">Read more</a>
+					{% if is_granted('ROLE_ADMIN') %}
+					<a href="{{ path('article_edit', {'id': article.id}) }}" class="btn cta">Edit article</a>
+					{% endif %}
 			</article>
 		{% endfor %}
 

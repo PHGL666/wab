@@ -7,16 +7,10 @@
 
 {% block body %}
 
-	<div class="container">
-	<h1>Enregistrement</h1>
-		<div class="row">
-			<div>
-				{{ form_start(registrationForm) }}
-				{{ form_widget(registrationForm) }}
-				<button type="submit" class="btn cta">Enregistrer</button>
-				{{ form_end(registrationForm) }}
-			</div>
-		</div>
-	</div>
+	<h1>Register</h1>
+	{{ form_start(registrationForm) }}
+	{{ form_widget(registrationForm) }}
+	<button type="submit" class="btn cta">Register</button>
+	{{ form_end(registrationForm) }}
 
 {% endblock %}

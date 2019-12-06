@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -20,11 +21,13 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=10, max=255, minMessage="Your title must contain 10 characters")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=20, minMessage="Your content must contain 20 characters at least")
      */
     private $content;
 

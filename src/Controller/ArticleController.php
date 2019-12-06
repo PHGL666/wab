@@ -4,9 +4,15 @@ namespace App\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ArticleController extends AbstractController
 {
@@ -21,17 +27,55 @@ class ArticleController extends AbstractController
 
         return $this->render('article/article.html.twig', [
             'controller_name' => 'ArticleController',
-            'title' => "Les dernières nouveautés du WAB",
+            'title' => "Last news from the WAB Project",
             'articles' => $article
         ]);
     }
     
     /** 
      * @Route("/article/new", name="article_create")
+     * @Route("/article/{id}/edit", name="article_edit")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function create() {
-        return $this->render('article/create.html.twig');
+    public function form(Article $article = null, Request $request, ObjectManager $manager) {
+        if(!$article) {
+            $article = new Article();
+        }
+
+        $form = $this->createFormBuilder($article)
+                    ->add ('title')
+                    ->add ('content')
+                    ->add ('image', 
+                    FileType::class, [
+                        'mapped' => false,
+                        'required' => false
+                    ])
+                    ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            if(!$article->getId()){
+                $article->setCreatedAt(new \DateTime());
+            }
+            $imageFile = $form["image"]->getData();
+
+            if ($imageFile) {
+                $filename = uniqid() . "." . $imageFile->guessExtension();
+                $imageFile->move($this->getParameter("upload_dir"), $filename);
+                $article->setImage($filename);
+            }
+
+            $manager->persist($article);
+            $manager->flush();
+
+            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
+        }
+
+        return $this->render('article/create.html.twig', [
+            'formArticle' => $form->createView(),
+            'editMode' => $article->getId() !== null
+        ]);
     }
 
     /** 
@@ -49,4 +93,7 @@ class ArticleController extends AbstractController
             'article' => $article
         ]);
     }
+
+
+
 }
