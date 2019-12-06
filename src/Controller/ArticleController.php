@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -42,15 +43,8 @@ class ArticleController extends AbstractController
             $article = new Article();
         }
 
-        $form = $this->createFormBuilder($article)
-                    ->add ('title')
-                    ->add ('content')
-                    ->add ('image', 
-                    FileType::class, [
-                        'mapped' => false,
-                        'required' => false
-                    ])
-                    ->getForm();
+        // APPEL DU ARTICLETYPE
+        $form = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);
 
