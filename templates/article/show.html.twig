@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles
+{% block title %}{{ article.title }}
 {% endblock %}
 
 {% block body %}
@@ -11,6 +11,6 @@
 			<img src="{{ article.image }}" alt="">
 			{{ article.content | raw }}
 		</div>
-		<a href="{{ path('article_edit', {'id': article.id}) }}" class="btn cta">Edit article</a>
+		<a href="{{ path('article_edit', {'slug': article.slug}) }}" class="btn cta">Edit article</a>
 	</article>
 {% endblock %}

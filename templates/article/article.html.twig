@@ -16,9 +16,9 @@
 					<img src="{{ article.image }}" alt="">
 					{{ article.content | raw }}
 				</div>
-					<a href="{{ path('article_show', {'id': article.id}) }}" class="btn cta">Read more</a>
+					<a href="{{ path('article_show', {'slug': article.slug}) }}" class="btn cta">Read more</a>
 					{% if is_granted('ROLE_ADMIN') %}
-					<a href="{{ path('article_edit', {'id': article.id}) }}" class="btn cta">Edit article</a>
+					<a href="{{ path('article_edit', {'slug': article.slug}) }}" class="btn cta">Edit article</a>
 					{% endif %}
 			</article>
 		{% endfor %}

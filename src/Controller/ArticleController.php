@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Service\Slugger;
 use App\Repository\ArticleRepository;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -35,10 +36,10 @@ class ArticleController extends AbstractController
     
     /** 
      * @Route("/article/new", name="article_create")
-     * @Route("/article/{id}/edit", name="article_edit")
+     * @Route("/article/{slug}/edit", name="article_edit")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function form(Article $article = null, Request $request, ObjectManager $manager) {
+    public function form(Article $article = null, Request $request, Slugger $slugger, ObjectManager $manager) {
         if(!$article) {
             $article = new Article();
         }
@@ -60,10 +61,12 @@ class ArticleController extends AbstractController
                 $article->setImage($filename);
             }
 
+            $article->setSlug($slugger->slugify($article->getTitle()));
+
             $manager->persist($article);
             $manager->flush();
 
-            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
+            return $this->redirectToRoute('article_show', ['slug' => $article->getSlug()]);
         }
 
         return $this->render('article/create.html.twig', [
@@ -73,7 +76,7 @@ class ArticleController extends AbstractController
     }
 
     /** 
-     * @Route("/article/{id}", name="article_show")
+     * @Route("/article/{slug}", name="article_show")
      */
     //public function show(ArticleRepository $repo, $id)
     public function show(Article $article)
