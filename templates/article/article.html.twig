@@ -11,7 +11,7 @@
 		{% for article in articles %}
 			<article>
 				<h2>{{ article.title }}</h2>
-				<div class="metadata">Write the {{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }} in category Modelism</div>
+				<div class="metadata">Writed on the {{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }} in category {{ article.category.label }}</div>
 				<div class="content">
 					<img src="{{ article.image }}" alt="">
 					{{ article.content | raw }}

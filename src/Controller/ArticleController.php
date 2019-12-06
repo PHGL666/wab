@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Article;
+use App\Entity\Category;
 use App\Form\ArticleType;
 use App\Service\Slugger;
 use App\Repository\ArticleRepository;
@@ -29,7 +30,7 @@ class ArticleController extends AbstractController
 
         return $this->render('article/article.html.twig', [
             'controller_name' => 'ArticleController',
-            'title' => "Last news from the WAB Project",
+            'title' => "Last news from WAB Project",
             'articles' => $article
         ]);
     }

@@ -37,7 +37,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $article = new Article();
             $article->setTitle("Title of the article n°$i")
                 ->setSlug($this->slugger->slugify($article->getTitle()))
-                ->setCategory($this->getReference("cat-modelism"))
+                ->setCategory($this->getReference("cat-model"))
                 ->setContent("<p>Content of the article n°$i</p>")
                 ->setImage("http://placehold.it/350x150")
                 ->setCreatedAt(new \DateTime());

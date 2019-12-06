@@ -14,12 +14,15 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('category')
+            ->add('image',
+                FileType::class,
+                [
+                    'mapped' => false,
+                    'required' => false
+                ]
+            )
             ->add('content')
-            ->add('image', 
-            FileType::class, [
-            'mapped' => false,
-            'required' => false
-            ])
             // ->add('createdAt')
         ;
     }

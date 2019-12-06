@@ -10,6 +10,7 @@
 	<h1>Create an article</h1>
     {{ form_start(formArticle) }}
 	{{ form_row(formArticle.title, {'attr': {'placeholder': "Title of article"}}) }}
+	{{ form_row(formArticle.category, {'attr': {'placeholder': "Category of article"}}) }}
 	{{ form_row(formArticle.content, {'attr': {'placeholder': "Content of article"}}) }}
 	{{ form_row(formArticle.image, {'attr': {'placeholder': "Add an image"}}) }}
 	<button type="submit" class="btn cta">
