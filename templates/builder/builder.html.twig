@@ -1,10 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BuilderController!
+{% block title %}Select your army !
 {% endblock %}
 
 {% block body %}
 
+	<h1>{{ title }}</h1>
+
+	<div class="container">
+		<div class="row">
+			{% for army in armies %}
+				<div class="col-lg-3 col-md-6 col-sm-12 text-center">
+					<div class="card my-3">
+						<div class="card-body">
+							<img src="{{ army.logo }}" alt="{{ army.name }}">
+						</div>
+						<a href="{# {{ path('article_show', {'slug': article.slug}) }} #}" class="btn cta">{{ army.name }}</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 
 
 {% endblock %}
