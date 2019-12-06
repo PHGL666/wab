@@ -2,3 +2,6 @@
     <a href="...">Delete</a>
 {% endif %}
 
+
+
+<img src="{{ asset('uploads/' ~ article.picture) }}" alt="">
