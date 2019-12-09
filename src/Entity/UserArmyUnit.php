@@ -56,4 +56,11 @@ class UserArmyUnit
 
         return $this;
     }
+
+    /*
+    public function __toString()
+    {
+        return $this->getUnit().' '.$this->getUserArmy();
+    }
+    */
 }

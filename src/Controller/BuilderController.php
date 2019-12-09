@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Army;
 use App\Repository\ArmyRepository;
+use App\Repository\UnitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -22,18 +22,19 @@ class BuilderController extends AbstractController
         ]);
     }
 
-/**
-     * @Route("/builder/composer", name="builder")
+    
+    /**
+     * @Route("/builder/select", name="select")
      */
-    public function builder(ArmyRepository $repo)
+
+    public function select(ArmyRepository $repo)
     {
         $army = $repo->findAll();
 
-        return $this->render('builder/builder.html.twig', [
+        return $this->render('builder/select.html.twig', [
             'controller_name' => 'BuilderController',
-            'title' => "Select your army",
+            'title' => "Select your composition",
             'armies' => $army
         ]);
     }
-
 }

@@ -2,17 +2,19 @@ easy_admin:
     design:
         brand_color: 'rgba(180, 0, 0)'
         assets:
-            favicon: '/assets/favicon.png'
+            favicon: '/assets/backend/favicon.png'
 
     entities:
-        User:
-            class:  App\Entity\User
-        Army:
-            class:  App\Entity\Army
-        Unit:
-            class:  App\Entity\Unit
-        Article:
-            class:  App\Entity\Article
+        - App\Entity\User
+        - App\Entity\UserArmy
+        - App\Entity\UserArmyUnit
+        - App\Entity\Article
+        - App\Entity\Category
+        - App\Entity\Army
+        - App\Entity\Unit
+        - App\Entity\UnitCategory
+        - App\Entity\UnitCategoryHasUnitLimit
+        - App\Entity\UnitLimit
 
     site_name:  'WAR - Wargaming Army Builder'
 

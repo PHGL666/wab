@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5574c7d7827c8473327b9a0dd622573e",
+    "content-hash": "89802c3ebc08d569632d476342d77d08",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -4448,7 +4448,7 @@
         },
         {
             "name": "symfony/security-csrf",
-            "version": "v4.3.6",
+            "version": "v4.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-csrf.git",

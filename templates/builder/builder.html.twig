@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Select your army !
+{% block title %}Select your army
 {% endblock %}
 
 {% block body %}
@@ -15,7 +15,7 @@
 						<div class="card-body">
 							<img src="{{ army.logo }}" alt="{{ army.name }}">
 						</div>
-						<a href="{# {{ path('article_show', {'slug': article.slug}) }} #}" class="btn cta">{{ army.name }}</a>
+						<a href="{{ path('select') }}" class="btn cta">{{ army.name }}</a>
 					</div>
 				</div>
 			{% endfor %}

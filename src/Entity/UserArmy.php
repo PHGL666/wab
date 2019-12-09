@@ -116,4 +116,5 @@ class UserArmy
 
         return $this;
     }
+
 }

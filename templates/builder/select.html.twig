@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Select your composition
+{% endblock %}
+
+
+{# 
+<a href="{{ path('article_edit') }}" class="btn cta">Edit article</a>
+#}
+
+{% block body %}
+
+	{% for army in armies %}
+		<div class="col-lg-3 col-md-6 col-sm-12 text-center">
+			<div class="card my-3">
+				<div class="card-body">
+					<div>{{ army.unit }}</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+{% endblock %}
