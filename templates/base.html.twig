@@ -22,7 +22,7 @@
 					<ul class="navbar-nav ml-auto">
 						{% if is_granted('ROLE_ADMIN') %}
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('article_create') }}">Create an article</a>
+								{# <a class="nav-link" href="{{ path('article_create') }}">Create an article</a> #}
 								<a class="nav-link" href="/admin">Access to EasyAdmin</a>
 
 							{% endif %}
@@ -45,8 +45,12 @@
 			</div>
 		</nav>
 
+
+
 		<div class="container min-vh-100"> {% block body %}{% endblock %}
 			</div>
+
+
 
 			<footer class="footer">
 				<div class="container">
