@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Article
 {
@@ -127,5 +128,18 @@ class Article
         $this->category = $category;
 
         return $this;
+    }    
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+    
+    /**
+    * @ORM\PrePersist
+    */
+    public function prePersist()
+    {
+        $this->setCreatedAt(new \DateTime());
     }
 }

@@ -1,23 +1,51 @@
 easy_admin:
-    design:
-        brand_color: 'rgba(180, 0, 0)'
-        assets:
-            favicon: '/assets/backend/favicon.png'
-
-    entities:
-        - App\Entity\User
-        - App\Entity\UserArmy
-        - App\Entity\UserArmyUnit
-        - App\Entity\Article
-        - App\Entity\Category
-        - App\Entity\Army
-        - App\Entity\Unit
-        - App\Entity\UnitCategory
-        - App\Entity\UnitCategoryHasUnitLimit
-        - App\Entity\UnitLimit
 
     site_name:  'WAR - Wargaming Army Builder'
 
     user:
         name_property_path: 'email'
         avatar_property_path: 'gravatar'
+
+    design:
+        brand_color: 'rgba(180, 0, 0)'
+        assets:
+            favicon: '/assets/backend/favicon.png'
+
+    entities:
+        User:
+            class: App\Entity\User
+            form:
+                fields:
+                    - { property: 'pseudo', icon: 'user' }
+                    - { property: 'email' }
+                    - { property: 'password' }
+        Article:
+            class: App\Entity\Article
+            form:
+                fields:
+                    - { property: 'title' }
+                    - { property: 'content' }
+                    - { property: 'image', type: 'file' }
+                    - { property: 'slug' }
+                    - { property: 'category' }
+        Category:
+            class: App\Entity\Category
+            form:
+                fields:
+                    - { property: 'label' }
+        Army:
+            class: App\Entity\Army
+            form:
+                fields:
+                    - { property: 'name' }
+                    - { property: 'logo', type: 'file' }
+        Unit:
+            class: App\Entity\Unit
+            form:
+                fields:
+                    - { property: 'name' }
+                    - { property: 'size_min' }
+                    - { property: 'size_max' }
+                    - { property: 'cost_per_figure' }
+                    - { property: 'army' }
+                    - { property: 'unit_category' }

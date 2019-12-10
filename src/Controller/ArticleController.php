@@ -51,9 +51,6 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            if(!$article->getId()){
-                $article->setCreatedAt(new \DateTime());
-            }
             $imageFile = $form["image"]->getData();
 
             if ($imageFile) {

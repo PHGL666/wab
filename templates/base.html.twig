@@ -6,7 +6,7 @@
 			{% block title %}WAB-project
 			{% endblock %}
 		</title>
-		<link rel="shortcut icon" type="image/x-icon" href="/wab/assets/images/favicon.png">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('build/images/favicon.png/') }}">
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
@@ -20,33 +20,32 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
-					{% if is_granted('ROLE_ADMIN') %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('article_create') }}">Create an article</a>
-							{# <li class="nav-item">
-															<a class="nav-link" href="{{ path('admin') }}">EasyAdmin</a>
-														</li> #}
-						{% endif %}
-						{% if app.user %}
+						{% if is_granted('ROLE_ADMIN') %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('article_create') }}">Create an article</a>
+								<a class="nav-link" href="/admin">Access to EasyAdmin</a>
 
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('builder') }}">Army Builder</a>
+							{% endif %}
+							{% if app.user %}
+
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('builder') }}">Army Builder</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('article') }}">Articles</a>
+								</li>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('article') }}">Articles</a>
+								<a class="nav-link" href="{{ path('app_logout') }}">Disconnect</a>
 							</li>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_logout') }}">Disconnect</a>
-						</li>
-					{% endif %}
-					
+						{% endif %}
+
 					</ul>
 				</div>
 			</div>
 		</nav>
 
-		<div class="container"> {% block body %}{% endblock %}
+		<div class="container min-vh-100"> {% block body %}{% endblock %}
 			</div>
 
 			<footer class="footer">

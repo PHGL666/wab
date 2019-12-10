@@ -117,4 +117,8 @@ class UserArmy
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getArmy()->getName()/* . " " . $this->getArmyPoints(); */;
+    }
 }
