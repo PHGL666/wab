@@ -28,6 +28,11 @@ class UserArmyUnit
      */
     private $user_army;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $number_of_unit;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,5 +65,17 @@ class UserArmyUnit
     public function __toString()
     {
         return $this->getUnit()->getName();
+    }
+
+    public function getNumberOfUnit(): ?int
+    {
+        return $this->number_of_unit;
+    }
+
+    public function setNumberOfUnit(int $number_of_unit): self
+    {
+        $this->number_of_unit = $number_of_unit;
+
+        return $this;
     }
 }
