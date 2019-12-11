@@ -19,6 +19,56 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    /**
+     * @param int $limit
+     * @return Article[]
+     */
+    public function findLastArticle(int $page, int $length): array
+    {
+        $qb = $this->createQueryBuilder("article");
+
+        $qb ->join("article.category", "category")
+            ->orderBy("article.createdAt", "DESC")
+            ->setFirstResult(($page - 1)* $length)
+            ->setMaxResults($length);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    ///**
+    // * @param int $limit
+    // * @return Article[]
+    // */
+    /*
+    public function findLastArticle(int $page, int $length, int $limit = 3): array
+    {
+        $qb = $this->createQueryBuilder("article");
+
+        $qb ->join("article.category", "category")
+            ->orderBy("article.createdAt", "DESC")
+            ->setFirstResult(($page - 1)* $length)
+            ->setMaxResults($limit);
+
+        return $qb->getQuery()->getResult();
+    }
+    */
+
+    // /**
+    // * @return Article[]
+    // */
+    /*
+    public function findLast(int $limit = 6): array
+    {
+        $qb = $this->createQueryBuilder("article");
+
+        $qb->select("article", "article.category")
+            ->innerJoin("article.category", "category")
+            ->orderBy("article.createdAt", "DESC")
+            ->setMaxResults($limit);
+
+        return $qb->getQuery()->getResult();
+    }
+*/
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */
@@ -36,6 +86,7 @@ class ArticleRepository extends ServiceEntityRepository
     }
     */
 
+
     /*
     public function findOneBySomeField($value): ?Article
     {
@@ -48,3 +99,4 @@ class ArticleRepository extends ServiceEntityRepository
     }
     */
 }
+

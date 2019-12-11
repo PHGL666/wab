@@ -21,12 +21,15 @@ class ArticleController extends AbstractController
 {
     /**
      * @Route("/article", name="article")
+     * @param ArticleRepository $repo
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function article(ArticleRepository $repo)
+    public function article(ArticleRepository $repo, Request $request)
     {
         // $repo = $this->getDoctrine()->getRepository(Article::class); PAS BESOIN DE LA LIGNE CAR APPEL DU REPO ARTICLE EN PARAMETRE
 
-        $article = $repo->findAll();
+        $article = $repo->findLastArticle((int) $request->query->get("page", 1), 4);
 
         return $this->render('article/article.html.twig', [
             'controller_name' => 'ArticleController',
@@ -88,7 +91,4 @@ class ArticleController extends AbstractController
             'article' => $article
         ]);
     }
-
-
-
 }
