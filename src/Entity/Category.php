@@ -85,5 +85,4 @@ class Category
     {
         return $this->getLabel();
     }
-
 }

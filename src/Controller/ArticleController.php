@@ -34,7 +34,8 @@ class ArticleController extends AbstractController
         return $this->render('article/article.html.twig', [
             'controller_name' => 'ArticleController',
             'title' => "Last news from WAB Project",
-            'articles' => $article
+            'articles' => $article,
+            'totalArticles' => $repo->countArticle()
         ]);
     }
     

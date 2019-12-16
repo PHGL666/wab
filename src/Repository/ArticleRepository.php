@@ -35,68 +35,13 @@ class ArticleRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    ///**
-    // * @param int $limit
-    // * @return Article[]
-    // */
-    /*
-    public function findLastArticle(int $page, int $length, int $limit = 3): array
+    public function countArticle()
     {
-        $qb = $this->createQueryBuilder("article");
-
-        $qb ->join("article.category", "category")
-            ->orderBy("article.createdAt", "DESC")
-            ->setFirstResult(($page - 1)* $length)
-            ->setMaxResults($limit);
-
-        return $qb->getQuery()->getResult();
-    }
-    */
-
-    // /**
-    // * @return Article[]
-    // */
-    /*
-    public function findLast(int $limit = 6): array
-    {
-        $qb = $this->createQueryBuilder("article");
-
-        $qb->select("article", "article.category")
-            ->innerJoin("article.category", "category")
-            ->orderBy("article.createdAt", "DESC")
-            ->setMaxResults($limit);
-
-        return $qb->getQuery()->getResult();
-    }
-*/
-    // /**
-    //  * @return Article[] Returns an array of Article objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder("article")
+            ->select("COUNT(article.id)")
             ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+            ->getSingleScalarResult();
+    }// il faut utiliser le select pour faire fonctionner le singleScalarResult autrement il ne sait pas quoi on doit selectionner. 
 
-
-    /*
-    public function findOneBySomeField($value): ?Article
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
 

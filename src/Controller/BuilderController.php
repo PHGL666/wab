@@ -80,7 +80,7 @@ class BuilderController extends AbstractController
     // * @Route("/builder/composer", name="composer")
     // */
     /*
-    public function composer(UserArmyUnitRepository $repo)
+    public function addUnit(UserArmyUnitRepository $repo)
     {
         $UserArmyUnit = $repo->findAll();
 
