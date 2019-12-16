@@ -13,29 +13,29 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BuilderController extends AbstractController
+class SelectController extends AbstractController
 {
     /**
-     * @Route("/builder", name="builder")
+     * @Route("/select", name="select_army")
      */
     public function builder(ArmyRepository $repo)
     {
         $army = $repo->findAll();
 
-        return $this->render('builder/builder.html.twig', [
-            'controller_name' => 'BuilderController',
+        return $this->render('select/select_army.html.twig', [
+            'controller_name' => 'SelectController',
             'title' => "Select your army",
             'armies' => $army
         ]);
     }
 
     /**
-     * @Route("/builder/select", name="select")
+     * @Route("select/select-compo", name="select_compo")
      */
+    public function form(UserArmy $UserArmy = null, Request $request, Slugger $slugger, ObjectManager $manager)
+    {
 
-    public function form(UserArmy $UserArmy = null, Request $request, Slugger $slugger, ObjectManager $manager) {
-
-        if(!$UserArmy) {
+        if (!$UserArmy) {
             $UserArmy = new UserArmy();
         }
 
@@ -43,52 +43,35 @@ class BuilderController extends AbstractController
         $form = $this->createForm(BuilderSelectType::class, $UserArmy);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             /*$UserArmy->setSlug($slugger->slugify($UserArmy->getName()));*/
 
             $manager->persist($UserArmy);
             $manager->flush();
 
-            /*return $this->redirectToRoute('composer', ['slug' => $UserArmy->getSlug()]);*/
-            return $this->redirectToRoute('composer');
+            /*return $this->redirectToRoute('select_armyUnits', ['slug' => $UserArmy->getSlug()]);*/
+            return $this->redirectToRoute('select_armyUnits');
         }
 
-        return $this->render('builder/select.html.twig', [
-            'controller_name' => 'BuilderController',
+        return $this->render('select/select_compo.html.twig', [
+            'controller_name' => 'SelectController',
             'title' => "Select your composition",
             'SelectFormCompo' => $form->createView(),
         ]);
     }
 
-    
     /**
-     * @Route("/builder/composer", name="composer")
+     * @Route("/select/select-units", name="select_armyUnits")
      */
     public function list(UserArmyUnitRepository $repo)
     {
         $userArmyUnit = $repo->findAll();
 
-        return $this->render('builder/composer.html.twig', [
-            'controller_name' => 'BuilderController',
+        return $this->render('select/select_armyUnits.html.twig', [
+            'controller_name' => 'SelectController',
             'title' => "Select your units",
             'userArmyUnits' => $userArmyUnit
         ]);
     }
-
-    // /**
-    // * @Route("/builder/composer", name="composer")
-    // */
-    /*
-    public function addUnit(UserArmyUnitRepository $repo)
-    {
-        $UserArmyUnit = $repo->findAll();
-
-        return $this->render('builder/composer.html.twig', [
-            'controller_name' => 'BuilderController',
-            'title' => "Select your units",
-            'userArmyUnits' => $UserArmyUnit
-        ]);
-    }
-    */
 }
