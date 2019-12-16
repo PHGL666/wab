@@ -12,7 +12,7 @@ class BuilderSelectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('user')
+            //->add('user')
             ->add('army')
             ->add('army_points')
         ;

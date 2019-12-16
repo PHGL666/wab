@@ -27,7 +27,7 @@ class ArticleController extends AbstractController
      */
     public function article(ArticleRepository $repo, Request $request)
     {
-        // $repo = $this->getDoctrine()->getRepository(Article::class); PAS BESOIN DE LA LIGNE CAR APPEL DU REPO ARTICLE EN PARAMETRE
+        // $repo = $this->getDoctrine()->getRepository(Article::class); PAS BESOIN DE CETTE LIGNE CAR APPEL DU REPO ARTICLE EN PARAMETRE
 
         $article = $repo->findLastArticle((int) $request->query->get("page", 1), 4);
 

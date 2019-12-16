@@ -1,23 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Select your composition
+
+{% form_theme SelectFormCompo 'bootstrap_4_layout.html.twig' %}
+
+
+{% block title %}Select your compo
 {% endblock %}
-
-
-{# 
-<a href="{{ path('article_edit') }}" class="btn cta">Edit article</a>
-#}
 
 {% block body %}
 
+	<h1>Select the composition of your army</h1>
+
     {{ form_start(SelectFormCompo) }}
-	{{ form_row(SelectFormCompo.user) }}
+	{# {{ form_row(SelectFormCompo.user) }} #}
 	{{ form_row(SelectFormCompo.army) }}
 	{{ form_row(SelectFormCompo.army_points) }}
 	<button type="submit" class="btn cta">
         Create army
         </button>
 	{{ form_end(SelectFormCompo) }}
-
 
 {% endblock %}

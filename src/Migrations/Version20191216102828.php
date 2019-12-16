@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191210125028 extends AbstractMigration
+final class Version20191216102828 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -30,7 +30,7 @@ final class Version20191210125028 extends AbstractMigration
         $this->addSql('CREATE TABLE unit_category_has_unit_limit (id INT AUTO_INCREMENT NOT NULL, unit_category_id INT NOT NULL, unit_limit_id INT NOT NULL, min INT DEFAULT NULL, max INT DEFAULT NULL, INDEX IDX_CD7A5F8B8921F7C4 (unit_category_id), INDEX IDX_CD7A5F8BD463AB68 (unit_limit_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE unit_limit (id INT AUTO_INCREMENT NOT NULL, min INT NOT NULL, max INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, pseudo VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE user_army (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, army_id INT NOT NULL, army_points INT NOT NULL, INDEX IDX_76A063FFA76ED395 (user_id), INDEX IDX_76A063FF18D2742D (army_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user_army (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, army_id INT NOT NULL, army_points INT NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, INDEX IDX_76A063FFA76ED395 (user_id), INDEX IDX_76A063FF18D2742D (army_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE user_army_unit (id INT AUTO_INCREMENT NOT NULL, unit_id INT NOT NULL, user_army_id INT NOT NULL, number_of_unit INT NOT NULL, INDEX IDX_C2746039F8BD700D (unit_id), INDEX IDX_C274603940DF6A27 (user_army_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE article ADD CONSTRAINT FK_23A0E6612469DE2 FOREIGN KEY (category_id) REFERENCES category (id)');
         $this->addSql('ALTER TABLE unit ADD CONSTRAINT FK_DCBB0C5318D2742D FOREIGN KEY (army_id) REFERENCES army (id)');

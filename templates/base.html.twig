@@ -21,7 +21,8 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						{% if is_granted('ROLE_ADMIN') %}
-							<li class="nav-item">
+							<li
+								class="nav-item">
 								{# <a class="nav-link" href="{{ path('article_create') }}">Create an article</a> #}
 								<a class="nav-link" href="/admin">Access to EasyAdmin</a>
 
@@ -30,6 +31,9 @@
 
 								<li class="nav-item">
 									<a class="nav-link" href="{{ path('select_army') }}">Army Builder</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('army_list') }}">Army List</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{ path('article') }}">Articles</a>
@@ -46,10 +50,8 @@
 		</nav>
 
 
-
 		<div class="container min-vh-100"> {% block body %}{% endblock %}
 			</div>
-
 
 
 			<footer class="footer">
