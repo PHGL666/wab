@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserArmy index{% endblock %}
+
+{% block body %}
+    <h1>UserArmy index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Army_points</th>
+                <th>Name</th>
+                <th>Slug</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_army in user_armies %}
+            <tr>
+                <td>{{ user_army.id }}</td>
+                <td>{{ user_army.armyPoints }}</td>
+                <td>{{ user_army.name }}</td>
+                <td>{{ user_army.slug }}</td>
+                <td>
+                    <a href="{{ path('user_army_show', {'slug': user_army.slug}) }}">show</a>
+                    <a href="{{ path('user_army_edit', {'id': user_army.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_army_new') }}">Create new</a>
+{% endblock %}

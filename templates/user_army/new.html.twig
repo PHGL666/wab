@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New UserArmy{% endblock %}
+
+{% block body %}
+    <h1>Create new UserArmy</h1>
+
+    {{ include('user_army/_form.html.twig') }}
+
+    <a href="{{ path('user_army_index') }}">back to list</a>
+{% endblock %}

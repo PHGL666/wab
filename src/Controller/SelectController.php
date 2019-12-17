@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Unit;
+use App\Entity\Army;
 use App\Entity\UserArmy;
 use App\Entity\UserArmyUnit;
 use App\Form\BuilderSelectType;
@@ -50,15 +51,14 @@ class SelectController extends AbstractController
     }
 
     /**
-     * @Route("/army/new", name="army_create")
-     * @Route("/army/{slug}/edit", name="army_edit")
+     * @Route("/army/new/{id}", name="army_create")
      */
-    public function form(UserArmy $UserArmy = null, Request $request, Slugger $slugger, ObjectManager $manager)
+    public function form(Army $Army, Request $request, Slugger $slugger, ObjectManager $manager)
     {
+        $UserArmy = new UserArmy();
 
-        if (!$UserArmy) {
-            $UserArmy = new UserArmy();
-        }
+        $UserArmy->setUser($this->getUser());
+        $UserArmy->setArmy($Army);
 
         // APPEL DU FORMULAIRE
         $form = $this->createForm(BuilderSelectType::class, $UserArmy);
@@ -71,8 +71,7 @@ class SelectController extends AbstractController
             $manager->persist($UserArmy);
             $manager->flush();
 
-            return $this->redirectToRoute('army_unit', ['slug' => $UserArmy->getSlug()]);
-            //return $this->redirectToRoute('army_unit');
+            return $this->redirectToRoute('user_army_show', ['slug' => $UserArmy->getSlug()]);
         }
 
         return $this->render('select/create_army.html.twig', [
@@ -80,6 +79,17 @@ class SelectController extends AbstractController
             'title' => "Select your composition",
             'SelectFormCompo' => $form->createView(),
             'editMode' => $UserArmy->getId() !== null
+        ]);
+    }
+
+    /**
+     * @Route("/army/{slug}/edit", name="army_edit")
+     */
+    public function userArmyEdit(UserArmy $userArmy)
+    {
+        return $this->render('select/army_unit.html.twig', [
+            'title' => "Army units",
+            'userArmy' => $userArmy
         ]);
     }
 
