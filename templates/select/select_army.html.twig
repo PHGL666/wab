@@ -12,8 +12,8 @@
 			{% for army in armies %}
 				<div class="col-lg-3 col-md-6 col-sm-12 text-center">
 					<div class="card my-3">
-						<div class="card-body contain">
-							<img src="{{ army.logo }}" alt="{{ army.name }}">
+						<div class="card-body ">
+							<img class="" src="{{ army.logo }}" alt="{{ army.name }}">
 						</div>
 						<a href="{{ path('army_create') }}" class="btn cta">{{ army.name }}</a>
 					</div>

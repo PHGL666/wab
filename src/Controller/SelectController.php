@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Unit;
 use App\Entity\UserArmy;
 use App\Entity\UserArmyUnit;
 use App\Form\BuilderSelectType;
 use App\Repository\ArmyRepository;
+use App\Repository\UnitRepository;
 use App\Repository\UserArmyRepository;
 use App\Repository\UserArmyUnitRepository;
 use App\Service\Slugger;
@@ -69,8 +71,8 @@ class SelectController extends AbstractController
             $manager->persist($UserArmy);
             $manager->flush();
 
-            return $this->redirectToRoute('select_armyUnits', ['slug' => $UserArmy->getSlug()]);
-            /*return $this->redirectToRoute('select_armyUnits');*/
+            return $this->redirectToRoute('army_unit', ['slug' => $UserArmy->getSlug()]);
+            //return $this->redirectToRoute('army_unit');
         }
 
         return $this->render('select/create_army.html.twig', [
@@ -82,13 +84,52 @@ class SelectController extends AbstractController
     }
 
     /**
+     * @Route("/army/{slug}/units", name="army_unit")
+     */
+    public function armyUnit(UserArmyUnitRepository $userArmyUnit)
+    {
+        return $this->render('select/army_unit.html.twig', [
+            'title' => "Army units",
+            'userArmyUnits' => $userArmyUnit
+        ]);
+    }
+
+    // /**
+    //  * @Route("/army/{slug}/add/{id}", name="army_add")
+    // */
+    
+/*
+    public function add($id, Request $request)
+    {
+        $session = $request->getSession();
+
+        $army = $session->get('army', []);
+
+        if(!empty(   $army[$id])) {
+            $army[$id]++;
+        }
+
+        $session->set('army', $army);
+
+        dd($session->get('army'));
+
+        /*
+        return $this->render('select/army_add.html.twig', [
+            'title' => "Add units to your army",
+            'userArmyUnits' => $userArmyUnit
+        ]);
+        
+    }
+*/
+    /**
      * @Route("/army/{slug}", name="army_show")
      */
-    public function show(UserArmy $userArmy)
+    public function show(UserArmy $userArmy, UserArmyUnitRepository $userArmyUnit)
     {
         return $this->render('select/army_show.html.twig', [
             'title' => "Army composition",
-            'userArmy' => $userArmy
+            'userArmy' => $userArmy,
+            'userArmyUnits' => $userArmyUnit
         ]);
     }
 }

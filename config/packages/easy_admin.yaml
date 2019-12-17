@@ -1,6 +1,6 @@
 easy_admin:
 
-    site_name:  'WAR - Wargaming Army Builder'
+    site_name:  'WAB - Wargaming Army Builder'
 
     user:
         name_property_path: 'email'

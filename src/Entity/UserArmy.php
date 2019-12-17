@@ -41,7 +41,7 @@ class UserArmy
     private $userArmyUnits;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $name;
 
@@ -127,11 +127,6 @@ class UserArmy
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->getArmy()->getName()/* . " " . $this->getArmyPoints(); */;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -154,5 +149,11 @@ class UserArmy
         $this->slug = $slug;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
+        /*return $this->getArmy()->getName() . " " . $this->getArmyPoints(); */
     }
 }

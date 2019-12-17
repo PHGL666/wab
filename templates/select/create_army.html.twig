@@ -12,7 +12,8 @@
 	<h1>Select the composition of your army</h1>
 
     {{ form_start(SelectFormCompo) }}
-	{# {{ form_row(SelectFormCompo.user) }} #}
+	{{ form_row(SelectFormCompo.user) }}
+	{{ form_row(SelectFormCompo.name) }}
 	{{ form_row(SelectFormCompo.army) }}
 	{{ form_row(SelectFormCompo.army_points) }}
 	<button type="submit" class="btn cta">

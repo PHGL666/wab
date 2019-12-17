@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ userArmy.name }}
+{% block title %}
+	{{ title }}
 {% endblock %}
 
 {% block body %}
-	<h1>{{ title }}</h1>
+
+	<h1>{{ userArmy.name }}</h1>
 
 	<section>
-		<div class="metadata">
-		
-		</div>
-        
+		<div class="metadata"></div>
+		{% for userArmyUnit in userArmyUnits %}
+			<div class="metadata">
+				{{  }}</div>
+		{% endfor %}
+
 		<a href="{{ path('army_edit', {'slug': userArmy.slug}) }}" class="btn cta">Edit your army</a>
 	</section>
+
+
 {% endblock %}
