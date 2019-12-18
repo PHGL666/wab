@@ -1,39 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}UserArmy index{% endblock %}
+{% block title %}UserArmy index
+{% endblock %}
 
 {% block body %}
-    <h1>UserArmy index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Army_points</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user_army in user_armies %}
-            <tr>
-                <td>{{ user_army.id }}</td>
-                <td>{{ user_army.armyPoints }}</td>
-                <td>{{ user_army.name }}</td>
-                <td>{{ user_army.slug }}</td>
-                <td>
-                    <a href="{{ path('user_army_show', {'slug': user_army.slug}) }}">show</a>
-                    <a href="{{ path('user_army_edit', {'id': user_army.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div class="row">
+		<h1>{{ title }}</h1>
 
-    <a href="{{ path('user_army_new') }}">Create new</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Army_points</th>
+					<th>Name</th>
+					<th>Slug</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user_army in user_armies %}
+					<tr>
+						<td>{{ user_army.id }}</td>
+						<td>{{ user_army.armyPoints }}</td>
+						<td>{{ user_army.name }}</td>
+						<td>{{ user_army.slug }}</td>
+						<td>
+							<a class="btn" href="{{ path('user_army_show', {'slug': user_army.slug}) }}"><img src="/build/images/show.png" alt="show"></a>
+
+							<a class="btn" href="{{ path('user_army_edit', {'id': user_army.id}) }}"><img src="/build/images/edit-file.png" alt="edit"></a>
+
+							{{ include('user_army/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a class="btn cta mb-3" href="{{ path('select_army') }}">Create new</a>
+
+		{#
+							<div class="mt-3 col-6 offset-5">
+								<nav class="pagination-sm">
+									<ul class="pagination">
+										{% for i in 1..((totalArticles/4)|round(0, 'ceil')) %}
+											<li class="page-item">
+												<a class="page-link" href="{{ path('article', { page: i }) }}">{{ i }}</a>
+											</li>
+										{% endfor %}
+									</ul>
+								</nav>
+							</div>
+						#}
+
+	</div>
+
+
 {% endblock %}

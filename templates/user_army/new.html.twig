@@ -1,11 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New UserArmy{% endblock %}
+{% block title %}New UserArmy
+{% endblock %}
 
 {% block body %}
-    <h1>Create new UserArmy</h1>
+	<div class="container">
+		<div class="row justify-content-center">
+			<h1>Create new UserArmy</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row justify-content-center text-center">
 
-    {{ include('user_army/_form.html.twig') }}
+			{{ include('user_army/_form.html.twig') }}
 
-    <a href="{{ path('user_army_index') }}">back to list</a>
+		</div>
+	</div>
+
+	<div class="container mt-3">
+		<div class="row justify-content-center">
+			<a class="btn cta" href="{{ path('user_army_index') }}">Back to list</a>
+		</div>
+	</div>
+
+
 {% endblock %}

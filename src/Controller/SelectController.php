@@ -33,27 +33,10 @@ class SelectController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/army-list", name="army_list")
-     * @param ArticleRepository $repo
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function armyList(UserArmyRepository $repo)
-    {
-        $userArmy = $repo->findAll();
-
-        return $this->render('select/army_list.html.twig', [
-            'controller_name' => 'SelectController',
-            'title' => "Your armies",
-            'userArmies' => $userArmy
-        ]);
-    }
-
-    /**
-     * @Route("/army/new/{id}", name="army_create")
-     */
-    public function form(Army $Army, Request $request, Slugger $slugger, ObjectManager $manager)
+    // /**
+    // * @Route("/army/new/{id}", name="army_create")
+    // */
+/*    public function form(Army $Army, Request $request, Slugger $slugger, ObjectManager $manager)
     {
         $UserArmy = new UserArmy();
 
@@ -81,29 +64,7 @@ class SelectController extends AbstractController
             'editMode' => $UserArmy->getId() !== null
         ]);
     }
-
-    /**
-     * @Route("/army/{slug}/edit", name="army_edit")
-     */
-    public function userArmyEdit(UserArmy $userArmy)
-    {
-        return $this->render('select/army_unit.html.twig', [
-            'title' => "Army units",
-            'userArmy' => $userArmy
-        ]);
-    }
-
-    /**
-     * @Route("/army/{slug}/units", name="army_unit")
-     */
-    public function armyUnit(UserArmyUnitRepository $userArmyUnit)
-    {
-        return $this->render('select/army_unit.html.twig', [
-            'title' => "Army units",
-            'userArmyUnits' => $userArmyUnit
-        ]);
-    }
-
+*/
     // /**
     //  * @Route("/army/{slug}/add/{id}", name="army_add")
     // */
@@ -131,15 +92,4 @@ class SelectController extends AbstractController
         
     }
 */
-    /**
-     * @Route("/army/{slug}", name="army_show")
-     */
-    public function show(UserArmy $userArmy, UserArmyUnitRepository $userArmyUnit)
-    {
-        return $this->render('select/army_show.html.twig', [
-            'title' => "Army composition",
-            'userArmy' => $userArmy,
-            'userArmyUnits' => $userArmyUnit
-        ]);
-    }
 }

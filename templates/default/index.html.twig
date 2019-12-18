@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="col text-center">
 				<h1>WARGAMING ARMY BUILDER</h1>
-				<p class="text-justify">War Army Builder est un outil indispensable pour tout Wargamer vétéran de Blackhammer. 
+				<p class="text-justify">Wargaming Army Builder est un outil indispensable pour tout Wargamer vétéran de Blackhammer. 
 					Il vous permettra de composer vos listes d'armées de manière simple et efficace, de les archiver, 
 					de les imprimer ou de les envoyer directement à vos amis ou arbitre. Vous pourrez avec également 
 					renseigner vos résultats de bataille afin d'en dégager des statistiques que vous pourrez suivre sur le long 
@@ -29,12 +29,11 @@
 			<div class="col text-center">
 				<div class="my-3">
 					{% if not app.user %}
-						<button class="cta col-lg-3 col-md-6 col-sm-12 btn mt-1 mb-3">
-							<a href="{{ path('app_login') }}">Sign in General !</a>
-						</button>
-						<button class="cta col-lg-3 col-md-6 col-sm-12 btn mt-1 mb-3">
-							<a href="{{ path('app_register') }}">Register now Wargamer !</a>
-						</button>
+
+						<a class="cta col-lg-3 col-md-6 col-sm-12 btn mt-1 mb-3" href="{{ path('app_login') }}">Sign in General !</a>
+
+						<a class="cta col-lg-3 col-md-6 col-sm-12 btn mt-1 mb-3" href="{{ path('app_register') }}">Register now Wargamer !</a>
+
 					{% endif %}
 				</div>
 			</div>

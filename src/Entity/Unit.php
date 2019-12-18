@@ -50,7 +50,7 @@ class Unit
     private $userArmyUnits;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\UnitCategory", inversedBy="units")
+     * @ORM\ManyToOne(targetEntity="App\Entity\UnitCategory")
      * @ORM\JoinColumn(nullable=false)
      */
     private $unit_category;

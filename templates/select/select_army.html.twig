@@ -15,7 +15,7 @@
 						<div class="card-body ">
 							<img class="" src="{{ army.logo }}" alt="{{ army.name }}">
 						</div>
-						<a href="{{ path('army_create', {id: army.id}) }}" class="btn cta">{{ army.name }}</a>
+						<a href="{{ path('user_army_new', {id: army.id}) }}" class="btn cta">{{ army.name }}</a>
 					</div>
 				</div>
 			{% endfor %}

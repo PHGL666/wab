@@ -36,7 +36,7 @@ class UserArmy
     private $army;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UserArmyUnit", mappedBy="user_army")
+     * @ORM\OneToMany(targetEntity="App\Entity\UserArmyUnit", mappedBy="user_army", cascade={"remove"})
      */
     private $userArmyUnits;
 

@@ -1,0 +1,21 @@
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-12 text-center">
+				<a class="nav-link btn-footer" href="{{ path('legal_notice') }}">Legal Notice | ©PHGL</a>
+			</div>
+			<div class="col-lg-6 col-md-4 col-sm-12 text-center btn-footer">
+				<a class="nav-link btn-footer" href="{{ path('contact') }}">Contact</a>
+			</div>
+			<div class="flex-row col-lg-3 col-md-4 col-sm-12 text-center">
+				<a class="btn" href="https://www.facebook.com/"><img src="/build/images/facebook.png" alt="facebook"></a>
+				<a class="btn" href="https://www.instagram.com/?hl=fr"><img src="/build/images/instagram.png" alt="instagram"></a>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+{% endblock %}</body></html>
